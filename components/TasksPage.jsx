@@ -5,22 +5,21 @@ import { TimerContext } from "@/context/TimerContext";
 import EditTask from "./EditTask";
 
 const TasksPage = () => {
-  const { mode, timeLeft } = useContext(TimerContext);
+  const { mode, timeLeft, isActive, playTimer } = useContext(TimerContext);
   const [tasks, setTasks] = useState([]);
+  const [tasksDetails, setTasksDetails] = useState([]);
   const [activeTaskId, setActiveTaskId] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
-  const [isEdited, setIsEdited] = useState(false);
 
   useEffect(() => {
     const savedActiveTask = localStorage.getItem("activeTask");
+    const savedTasks = localStorage.getItem("tasks");
+    const savedTasksDetails = localStorage.getItem("tasksDetails");
 
     if (savedActiveTask) setActiveTaskId(Number(savedActiveTask));
-  }, []);
-
-  useEffect(() => {
-    const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) setTasks(JSON.parse(savedTasks));
+    if (savedTasksDetails) setTasksDetails(JSON.parse(savedTasksDetails));
   }, []);
 
   const saveTasks = (newTasks) => {
@@ -28,9 +27,58 @@ const TasksPage = () => {
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   };
 
-  const startTask = (taskId) => {
+  const saveTaskId = (taskId) => {
     setActiveTaskId(taskId);
     localStorage.setItem("activeTask", taskId);
+  };
+
+  const saveTasksDetails = (taskId) => {
+    const task = tasks.find((task) => task.id === taskId);
+    if (!task) return
+
+    setTasksDetails((prev) => {
+      const prevTaskDetails = prev.find(
+        (detail) => detail.id === taskId && detail.date === getFullDate()
+      );
+
+      let updated;
+
+      if (prevTaskDetails) {
+        updated = prev.map((detail) =>
+          detail.id === taskId && detail.date === getFullDate()
+            ? { ...detail, timeSpent: detail.timeSpent + 1 }
+            : detail
+        );
+      } else {
+        const newDetail = {
+          id: taskId,
+          date: getFullDate(),
+          taskName: task.taskName,
+          timeSpent: 0,
+        };
+
+        updated = [...prev, newDetail];
+      }
+
+      localStorage.setItem("tasksDetails", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const startTask = (taskId) => {
+    if (isActive) {
+      alert("you are switching tasks");
+    }
+
+    saveTaskId(taskId);
+    playTimer();
+  };
+
+  const getFullDate = () => {
+    const date = new Date().toLocaleDateString("pl-PL");
+    const formattedDate = date.replaceAll(".", "-");
+
+    return formattedDate;
   };
 
   const addTask = (taskName, pomodoros) => {
@@ -45,10 +93,11 @@ const TasksPage = () => {
 
     saveTasks([...tasks, newTask]);
 
-    if (tasks.length === 0) startTask(newTask.id);
+    if (tasks.length === 0) saveTaskId(newTask.id);
   };
 
   const deleteTask = (taskId) => {
+    if (taskId === activeTaskId) saveTaskId(null);
     saveTasks(tasks.filter((task) => task.id !== taskId));
   };
 
@@ -65,7 +114,7 @@ const TasksPage = () => {
       if (task.id === taskId) {
         const completed = task.completedPomodoros >= pomodoros;
         if (!completed) {
-          startTask(taskId)
+          saveTaskId(taskId);
         }
         return {
           ...task,
@@ -90,6 +139,20 @@ const TasksPage = () => {
   };
 
   useEffect(() => {
+    if (isActive && activeTaskId) {
+      saveTasksDetails(activeTaskId);
+    }
+  }, [isActive]);
+
+  useEffect(() => {
+    if (!activeTaskId) return;
+    if (mode === "break") return;
+    if (!isActive) return;
+
+    saveTasksDetails(activeTaskId);
+  }, [timeLeft]);
+
+  useEffect(() => {
     if (timeLeft === 0 && mode === "work" && activeTaskId) {
       const newTasks = tasks.map((task) => {
         if (task.id === activeTaskId) {
@@ -106,6 +169,7 @@ const TasksPage = () => {
         }
         return task;
       });
+
       saveTasks(newTasks);
     }
 
@@ -115,9 +179,9 @@ const TasksPage = () => {
 
     if (unfinishedTasks.length === 0) {
       console.log("koniec");
-      startTask(null);
-    } else {
-      startTask(unfinishedTasks[0].id);
+      saveTaskId(null);
+    } else if (!unfinishedTasks.some((task) => task.id === activeTaskId)) {
+      saveTaskId(unfinishedTasks[0].id);
     }
   }, [timeLeft, mode, activeTaskId]);
 
