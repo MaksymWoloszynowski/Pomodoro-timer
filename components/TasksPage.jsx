@@ -38,21 +38,25 @@ const TasksPage = () => {
 
     setTasksDetails((prev) => {
       const prevTaskDetails = prev.find(
-        (detail) => detail.id === taskId && detail.date === getFullDate()
+        (detail) => detail.id === taskId && detail.fullDate === getFullDate()
       );
 
       let updated;
 
       if (prevTaskDetails) {
         updated = prev.map((detail) =>
-          detail.id === taskId && detail.date === getFullDate()
+          detail.id === taskId && detail.fullDate === getFullDate()
             ? { ...detail, timeSpent: detail.timeSpent + 1 }
             : detail
         );
       } else {
+        const date = new Date()
         const newDetail = {
           id: taskId,
-          date: getFullDate(),
+          day: date.getDate(),
+          month: date.getMonth() + 1,
+          year: date.getFullYear(),
+          fullDate: getFullDate(),
           taskName: task.taskName,
           timeSpent: 0,
         };
