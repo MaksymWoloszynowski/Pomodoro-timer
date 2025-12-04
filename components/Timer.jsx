@@ -1,8 +1,9 @@
 "use client";
 
 import { TimerContext } from "@/context/TimerContext";
-import Button from "./Button";
+import Button from "@/components/Button";
 import { useContext } from "react";
+import "@/styles/timer.css"
 
 const Timer = () => {
   const { mode, timeLeft, isActive, playTimer, pauseTimer, resetTimer } = useContext(TimerContext);

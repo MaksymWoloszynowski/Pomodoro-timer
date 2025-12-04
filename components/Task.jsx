@@ -1,4 +1,5 @@
-import Button from "./Button";
+import Button from "@/components/Button";
+import "@/styles/task.css"
 
 const Task = ({ task, startTask, toggleComplete, deleteTask, active, toggleEdit }) => {
   

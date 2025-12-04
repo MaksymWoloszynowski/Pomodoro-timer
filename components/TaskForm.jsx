@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "@/styles/task.css"
 
 const TaskForm = ({ addTask, setIsButtonVisible, setIsFormVisible }) => {
   const [value, setValue] = useState("");
