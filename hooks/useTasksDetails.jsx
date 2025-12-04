@@ -1,53 +1,49 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useTasksDetails = () => {
   const [tasksDetails, setTasksDetails] = useState([]);
 
   useEffect(() => {
     const savedTasksDetails = localStorage.getItem("tasksDetails");
-
     if (savedTasksDetails) setTasksDetails(JSON.parse(savedTasksDetails));
   }, []);
 
-  const groupData = (param) => {
-    return tasksDetails.reduce((acc, curr) => {
-      let criteria
-      if (param === "day") {
-        criteria = curr.fullDate
-      } else if (param === "month") {
-        criteria = `${curr.month}-${curr.year}`
-      } else if (param === "year") {
-        criteria = curr.year
+  const getFullDate = () =>
+    new Date().toLocaleDateString("pl-PL").replaceAll(".", "-");
+
+  const saveTasksDetails = (taskId, taskName) => {
+    setTasksDetails((prev) => {
+      const prevTaskDetails = prev.find(
+        (detail) => detail.id === taskId && detail.date === getFullDate()
+      );
+
+      let updated;
+
+      if (prevTaskDetails) {
+        updated = prev.map((detail) =>
+          detail.id === taskId && detail.date === getFullDate()
+            ? { ...detail, timeSpent: detail.timeSpent + 1 }
+            : detail
+        );
+      } else {
+        const newDetail = {
+          id: taskId,
+          date: getFullDate(),
+          taskName,
+          timeSpent: 0,
+        };
+        updated = [...prev, newDetail];
       }
-      
-      if (!acc[criteria]) {
-          acc[criteria] = [];
-        }
 
-        acc[criteria].push(curr);
-
-      return acc;
-    }, {});
+      localStorage.setItem("tasksDetails", JSON.stringify(updated));
+      return updated;
+    });
   };
 
-  const getDailyTasks = () => {
-    return groupData("day")
-  }
+  const getMinutesFocused = () =>
+    tasksDetails.reduce((acc, curr) => acc + curr.timeSpent, 0);
 
-  const getMonthlyTasks = () => {
-    return groupData("month")
-  }
-
-  const getYearlyTasks = () => {
-    return groupData("year")
-  }
-
-  return {
-    tasksDetails,
-    getDailyTasks,
-    getMonthlyTasks,
-    getYearlyTasks
-  };
+  return { tasksDetails, saveTasksDetails, getMinutesFocused };
 };
 
 export default useTasksDetails;
