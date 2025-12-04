@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar";
 
 import { SettingsContext } from "@/context/SettingsContext";
 import { useContext, useEffect, useState } from "react";
+import "@/styles/navbar.css"
 
 const SettingsPage = () => {
   const {
