@@ -1,0 +1,55 @@
+@use '../abstracts/variables'as *;
+@use '../abstracts/mixins'as *;
+
+.timer-container {
+    @include flex-center(column);
+    background-color: rgba($color: #ffffff, $alpha: 0.1);
+    margin: auto;
+    width: max-content;
+    padding: 1.5em 3em;
+    border-radius: 0.5rem;
+}
+
+.mode-buttons {
+    @include flex-center;
+    gap: 1em;
+
+    button {
+        color: white;
+        border: none;
+        @include transition;
+
+        &:hover,
+        &.active {
+            background-color: rgba($color: #000000, $alpha: 0.15);
+        }
+    }
+}
+
+.timer-time {
+    font-size: 10rem;
+    font-weight: bold;
+    color: white;
+    @include flex-center;
+}
+
+.action-buttons {
+    @include flex-center;
+    gap: 1em;
+
+    button {
+        @include transition;
+        background-color: white;
+        border: none;
+
+        &.active:hover {
+            color: white;
+            background-color: darken($color-primary, 10%);
+        }
+
+        &:hover {
+            color: white;
+            background-color: darken($color-secondary, 10%);
+        }
+    }
+}

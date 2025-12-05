@@ -1,0 +1,14 @@
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $properties $duration $timing;
+}
+
+@function abc($color, $alpha: 1) {
+  @return rgba(red($color), green($color), blue($color), $alpha);
+}

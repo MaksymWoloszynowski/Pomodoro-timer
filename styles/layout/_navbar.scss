@@ -1,0 +1,41 @@
+@use '../abstracts/variables'as *;
+@use '../abstracts/mixins'as *;
+
+.navbar {
+    font-size: 2rem; 
+    margin: 1em 0 2em 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    gap: 2em;
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar-item {
+    li {
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 0.6em;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    &:hover {
+        background-color: rgba($color: #ffffff, $alpha: 0.1);
+    }
+}
