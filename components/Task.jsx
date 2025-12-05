@@ -1,28 +1,51 @@
 import Button from "@/components/Button";
-import "@/styles/task.css"
+import useTasks from "@/hooks/useTasks";
+import { FaCheck } from "react-icons/fa";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { useState } from "react";
+import DropdownOptions from "./DropdownOptions";
 
-const Task = ({ task, startTask, toggleComplete, deleteTask, active, toggleEdit }) => {
-  
+const Task = ({
+  task,
+  startTask,
+  toggleComplete,
+  deleteTask,
+  active,
+  toggleEdit,
+}) => {
+  const [openOptions, setOpenOptions] = useState(false);
+
   return (
-    <div style={{ padding: 8, border: "1px solid #ddd", marginBottom: 8, background: active ? "#eef" : "#fff" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div>
-          <strong style={{ textDecoration: task.completed ? "line-through" : "none" }}>{task.taskName}</strong>
-          <div style={{ fontSize: 12, color: "#666" }}>
-            {task.completedPomodoros}/{task.pomodoros}
-          </div>
-        </div>
-
-        <div>
-          <Button onClick={() => startTask(task.id)} text={active ? "Active" : "Start"}/>
-          <Button onClick={() => toggleComplete(task.id)} text={task.completed ? "Undo" : "Done"}/>
-          <Button onClick={() => deleteTask(task.id)} text={"Delete"}/>
-          <Button onClick={() => toggleEdit(task.id)} text={"Edit"}/>
-        </div>
+    <div onClick={() => startTask(task.id)} className={active ? "task active" : "task"}>
+      <div className="task-left">
+        <Button
+          className={"check-button"}
+          onClick={() => toggleComplete(task.id)}
+          text={task.completed ? <FaCheck className="check-icon" /> : ""}
+        />
+        <p className={task.completed ? "task-name completed" : "task-name"}>
+          {task.taskName}
+        </p>
+      </div>
+      <div className="task-right">
+        <p className="pomodoros">
+          {task.completedPomodoros}/{task.pomodoros}
+        </p>
+        <Button
+          onClick={() => setOpenOptions((prev) => !prev)}
+          text={<BsThreeDotsVertical />}
+          className={"options-button"}
+        />
+        {openOptions && (
+          <DropdownOptions
+            task={task}
+            deleteTask={deleteTask}
+            toggleEdit={toggleEdit}
+          />
+        )}
       </div>
     </div>
   );
 };
 
 export default Task;
-

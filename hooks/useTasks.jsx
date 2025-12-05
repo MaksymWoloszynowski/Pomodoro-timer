@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [activeTaskId, setActiveTaskId] = useState(null);
+  const [activeTask, setActiveTask] = useState("");
 
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
@@ -11,6 +12,15 @@ const useTasks = () => {
     if (savedTasks) setTasks(JSON.parse(savedTasks));
     if (savedActiveTask) setActiveTaskId(Number(savedActiveTask));
   }, []);
+
+  useEffect(() => {
+    const activeTask = tasks.find((task) => task.id === activeTaskId);
+    if (activeTask) {
+      setActiveTask(activeTask.taskName);
+    } else {
+      setActiveTask("");
+    }
+  }, [tasks, activeTaskId]);
 
   const saveTasks = (newTasks) => {
     setTasks(newTasks);
@@ -69,6 +79,7 @@ const useTasks = () => {
   return {
     tasks,
     activeTaskId,
+    activeTask,
     addTask,
     deleteTask,
     toggleEdit,
@@ -76,6 +87,7 @@ const useTasks = () => {
     toggleComplete,
     saveTaskId,
     setTasks,
+    saveTasks,
   };
 };
 

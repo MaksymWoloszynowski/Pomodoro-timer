@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { act, useContext, useEffect, useState } from "react";
 import TaskForm from "@/components/TaskForm";
 import Task from "@/components/Task";
 import EditTask from "@/components/EditTask";
+import Button from "./Button";
 import { TimerContext } from "@/context/TimerContext";
 import useTasks from "@/hooks/useTasks";
 import useTasksDetails from "@/hooks/useTasksDetails";
-
-import "@/styles/task.css";
 
 const TasksPage = () => {
   const { mode, timeLeft, isActive, playTimer } = useContext(TimerContext);
@@ -16,13 +15,14 @@ const TasksPage = () => {
   const {
     tasks,
     activeTaskId,
+    activeTask,
     addTask,
     deleteTask,
     toggleEdit,
     editTask,
     toggleComplete,
     saveTaskId,
-    setTasks,
+    saveTasks,
   } = useTasks();
 
   const { saveTasksDetails } = useTasksDetails();
@@ -34,27 +34,77 @@ const TasksPage = () => {
     saveTasksDetails(taskId, taskName);
   };
 
-  // Aktualizacja szczegółów w zależności od czasu i aktywności
   useEffect(() => {
-    if (isActive && activeTaskId) saveTasksDetails(activeTaskId);
-  }, [isActive, activeTaskId]);
-
-  useEffect(() => {
-    if (!activeTaskId || mode === "break" || !isActive) return;
+    if (!activeTaskId) return;
+    if (mode === "break") return;
+    if (!isActive) return;
     saveTasksDetails(activeTaskId);
   }, [timeLeft]);
 
+  useEffect(() => {
+    if (timeLeft === 0 && mode === "work" && activeTaskId) {
+      const newTasks = tasks.map((task) => {
+        if (task.id === activeTaskId) {
+          const updatedPomodoros = Math.min(
+            task.completedPomodoros + 1,
+            task.pomodoros
+          );
+          return {
+            ...task,
+            completedPomodoros: updatedPomodoros,
+            completed: updatedPomodoros >= task.pomodoros,
+          };
+        }
+        return task;
+      });
+      saveTasks(newTasks);
+    }
+    if (tasks.length === 0) return;
+    const unfinishedTasks = tasks.filter((task) => !task.completed);
+    if (unfinishedTasks.length === 0) {
+      console.log("koniec");
+      saveTaskId(null);
+    } else if (!unfinishedTasks.some((task) => task.id === activeTaskId)) {
+      saveTaskId(unfinishedTasks[0].id);
+    }
+  }, [timeLeft, mode, activeTaskId]);
+
   return (
-    <div>
+    <div className="tasks-container">
+      <p className="active-task">Active task: {activeTask}</p>
+      <p className="tasks-count">Tasks: {tasks.length}</p>
+      <div className="tasks-list">
+        {tasks.map((task) =>
+          task.isEditing ? (
+            <EditTask key={task.id} editTask={editTask} task={task} />
+          ) : (
+            <Task
+              key={task.id}
+              task={task}
+              deleteTask={deleteTask}
+              toggleComplete={toggleComplete}
+              startTask={() => startTask(task.id, task.taskName)}
+              active={task.id === activeTaskId}
+              toggleEdit={toggleEdit}
+            />
+          )
+        )}
+      </div>
       {isButtonVisible && (
-        <button
+        <Button
+          className={"add-task-button"}
           onClick={() => {
             setIsFormVisible(true);
             setIsButtonVisible(false);
+            setTimeout(() => {
+              window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth",
+              });
+            }, 50);
           }}
-        >
-          + Add task
-        </button>
+          text={"+ Add task"}
+        />
       )}
 
       {isFormVisible && (
@@ -64,22 +114,6 @@ const TasksPage = () => {
           setIsButtonVisible={setIsButtonVisible}
           setIsFormVisible={setIsFormVisible}
         />
-      )}
-
-      {tasks.map((task) =>
-        task.isEditing ? (
-          <EditTask key={task.id} editTask={editTask} task={task} />
-        ) : (
-          <Task
-            key={task.id}
-            task={task}
-            deleteTask={deleteTask}
-            toggleComplete={toggleComplete}
-            startTask={() => startTask(task.id, task.taskName)}
-            active={task.id === activeTaskId}
-            toggleEdit={toggleEdit}
-          />
-        )
       )}
     </div>
   );
