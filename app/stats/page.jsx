@@ -5,7 +5,6 @@ import Button from "@/components/Button";
 import StatsList from "@/components/StatsList";
 import useTasksDetails from "@/hooks/useTasksDetails";
 import { useState } from "react";
-import "../page.css"
 
 const StatsPage = () => {
   const {
