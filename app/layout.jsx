@@ -1,5 +1,6 @@
 import { SettingsProvider } from "@/context/SettingsContext";
 import { TimerProvider } from "@/context/TimerContext";
+import "@/styles/main.css"
 
 export const metadata = {
   title: "Create Next App",
