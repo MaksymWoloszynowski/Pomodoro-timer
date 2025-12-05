@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
-import "@/styles/stats.css"
 
 const StatsList = ({ stats }) => {
   const [itemOffset, setItemOffset] = useState(0);

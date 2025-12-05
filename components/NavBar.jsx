@@ -1,16 +1,28 @@
 import Link from "next/link";
-import "@/styles/navbar.css"
+import { FaChartBar } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
 
 const NavBar = () => {
   return (
-    <div>
-      <ul>
-        <Link href="/stats">
-          <li>Your stats</li>
-        </Link>
-        <Link href="/settings">
-          <li>Settings</li>
-        </Link>
+    <div className="navbar">
+      <ul className="navbar-list">
+        <li className="navbar-item">
+          <Link href="/" className="navbar-link">
+            Pomodoro timer
+          </Link>
+        </li>
+        <li className="navbar-item">
+          <Link href="/stats" className="navbar-link">
+            <FaChartBar className="icon" />
+            Your stats
+          </Link>
+        </li>
+        <li className="navbar-item">
+          <Link href="/settings" className="navbar-link">
+            <FaCog className="icon" />
+            Settings
+          </Link>
+        </li>
       </ul>
     </div>
   );
