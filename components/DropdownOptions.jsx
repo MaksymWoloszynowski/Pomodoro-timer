@@ -3,9 +3,9 @@ import Button from "./Button";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 
-const DropdownOptions = ({ task, deleteTask, toggleEdit }) => {
+const DropdownOptions = ({ task, deleteTask, toggleEdit, dropdownRef }) => {
   return (
-    <div className="dropdown-container">
+    <div ref={dropdownRef} onClick={(e) => e.stopPropagation()} className="dropdown-container">
       <ul className="dropdown-menu">
         <li onClick={() => toggleEdit(task.id)} className="dropdown-item">
           <FaEdit />
@@ -15,16 +15,9 @@ const DropdownOptions = ({ task, deleteTask, toggleEdit }) => {
           <FaTrash />
           <p className="dropdown-text">Delete</p>
         </li>
-        {/* <li></li> */}
       </ul>
     </div>
   );
 };
-{
-  /* <Button
-            onClick={() => startTask(task.id)}
-            text={active ? "Active" : "Start"}
-          /> */
-}
 
 export default DropdownOptions;
