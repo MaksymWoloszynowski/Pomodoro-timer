@@ -94,9 +94,39 @@ body.work-mode {
   background-color: rgb(239, 62, 54);
   transition: all 0.3s ease-in-out;
 }
+body.work-mode.pomodoro-1 {
+  background-color: rgb(239, 62, 54);
+}
+body.work-mode.pomodoro-2 {
+  background-color: rgb(255, 135, 135);
+}
+body.work-mode.pomodoro-3 {
+  background-color: rgb(255, 169, 77);
+}
+body.work-mode.pomodoro-4 {
+  background-color: rgb(255, 146, 43);
+}
+body.work-mode.pomodoro-5 {
+  background-color: rgb(255, 212, 59);
+}
 body.break-mode {
   background-color: rgb(58, 80, 107);
   transition: all 0.3s ease-in-out;
+}
+body.break-mode.break-1 {
+  background-color: rgb(58, 80, 107);
+}
+body.break-mode.break-2 {
+  background-color: rgb(42, 157, 143);
+}
+body.break-mode.break-3 {
+  background-color: rgb(169, 214, 229);
+}
+body.break-mode.break-4 {
+  background-color: rgb(202, 240, 248);
+}
+body.break-mode.break-5 {
+  background-color: rgb(137, 207, 240);
 }
 
 button {
@@ -105,6 +135,64 @@ button {
   cursor: pointer;
   padding: 0.5em 2em;
   font-weight: 900;
+}
+
+.boxes {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.box {
+  width: 3em;
+  height: 3em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pomodoro-1 {
+  background-color: rgb(239, 62, 54);
+}
+
+.pomodoro-2 {
+  background-color: rgb(255, 135, 135);
+}
+
+.pomodoro-3 {
+  background-color: rgb(255, 169, 77);
+}
+
+.pomodoro-4 {
+  background-color: rgb(255, 146, 43);
+}
+
+.pomodoro-5 {
+  background-color: rgb(255, 212, 59);
+}
+
+.break-1 {
+  background-color: rgb(58, 80, 107);
+}
+
+.break-2 {
+  background-color: rgb(42, 157, 143);
+}
+
+.break-3 {
+  background-color: rgb(169, 214, 229);
+}
+
+.break-4 {
+  background-color: rgb(202, 240, 248);
+}
+
+.break-5 {
+  background-color: rgb(137, 207, 240);
 }
 
 .task {
@@ -395,4 +483,94 @@ button {
 }
 .navbar-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.settings-section {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.settings-section-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.timer-section form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timer-input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+.timer-input:focus {
+  border-color: #4D96FF;
+  outline: none;
+}
+
+.timer-save-btn {
+  padding: 0.5rem 1rem;
+  background-color: #4D96FF;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.timer-save-btn:hover {
+  background-color: #6CCFF6;
+}
+
+.theme-section .color-section {
+  margin-bottom: 1.5rem;
+}
+
+.color-section p {
+  margin-bottom: 0.5rem;
+}
+
+.sound-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sound-select {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.sound-select:focus {
+  outline: none;
+  border-color: #4D96FF;
+}
+
+.volume-slider {
+  display: flex;
+  gap: 0.5em;
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,32 @@
+@use '../abstracts/variables' as *;
+
+.boxes {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.box {
+  width: 3em;
+  height: 3em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@each $i, $color in $pomodoro-colors {
+    .pomodoro-#{$i} {
+        background-color: $color;
+    }
+}
+
+@each $i, $color in $break-colors {
+    .break-#{$i} {
+        background-color: $color;
+    }
+}
