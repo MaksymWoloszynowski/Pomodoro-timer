@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import useTasks from "@/hooks/useTasks";
 import { FaCheck } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DropdownOptions from "./DropdownOptions";
 
 const Task = ({
@@ -14,9 +14,29 @@ const Task = ({
   toggleEdit,
 }) => {
   const [openOptions, setOpenOptions] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    if (!openOptions) return;
+
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpenOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openOptions]);
 
   return (
-    <div onClick={() => startTask(task.id)} className={active ? "task active" : "task"}>
+    <div
+      onClick={() => startTask(task.id)}
+      className={active ? "task active" : "task"}
+    >
       <div className="task-left">
         <Button
           className={"check-button"}
@@ -32,7 +52,10 @@ const Task = ({
           {task.completedPomodoros}/{task.pomodoros}
         </p>
         <Button
-          onClick={() => setOpenOptions((prev) => !prev)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpenOptions((prev) => !prev);
+          }}
           text={<BsThreeDotsVertical />}
           className={"options-button"}
         />
@@ -41,6 +64,7 @@ const Task = ({
             task={task}
             deleteTask={deleteTask}
             toggleEdit={toggleEdit}
+            dropdownRef={dropdownRef}
           />
         )}
       </div>
