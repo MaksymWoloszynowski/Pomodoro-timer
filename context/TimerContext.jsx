@@ -1,4 +1,3 @@
-// TimerContext.js
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -7,7 +6,7 @@ import { SettingsContext } from "@/context/SettingsContext";
 export const TimerContext = createContext();
 
 export const TimerProvider = ({ children }) => {
-  const { workMinutes, breakMinutes } = useContext(SettingsContext);
+  const { workMinutes, breakMinutes, alarmSound, alarmVolume } = useContext(SettingsContext);
 
   const [mode, setMode] = useState("work");
   const [timeLeft, setTimeLeft] = useState(workMinutes);
@@ -49,6 +48,14 @@ export const TimerProvider = ({ children }) => {
           const newMode = mode === "work" ? "break" : "work";
           const newTime = newMode === "work" ? workMinutes : breakMinutes;
           setMode(newMode);
+
+          try {
+            const audio = new Audio(`/sounds/${alarmSound}.mp3`)
+            audio.volume = alarmVolume / 100;
+            audio.play()
+          } catch (err) {
+            console.error("Error playing sound", err)
+          }
           return newTime;
         }
         return prev - 1;
