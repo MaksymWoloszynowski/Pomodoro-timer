@@ -6,6 +6,7 @@ import Button from "./Button";
 import { TimerContext } from "@/context/TimerContext";
 import useTasks from "@/hooks/useTasks";
 import useTasksDetails from "@/hooks/useTasksDetails";
+import toast from "react-hot-toast";
 
 const TasksPage = () => {
   const { mode, timeLeft, isActive, playTimer } = useContext(TimerContext);
@@ -23,6 +24,7 @@ const TasksPage = () => {
     toggleComplete,
     saveTaskId,
     saveTasks,
+    setActiveTaskId
   } = useTasks();
 
   const { saveTasksDetails } = useTasksDetails();
@@ -61,10 +63,12 @@ const TasksPage = () => {
     }
     if (tasks.length === 0) return;
     const unfinishedTasks = tasks.filter((task) => !task.completed);
-    if (unfinishedTasks.length === 0) {
-      console.log("koniec");
+    
+    if (unfinishedTasks.length === 0  && activeTaskId !== null) {
+      toast.success("You finished all tasks!")
       saveTaskId(null);
-    } else if (!unfinishedTasks.some((task) => task.id === activeTaskId)) {
+    } 
+    if (unfinishedTasks.length !== 0 && !unfinishedTasks.some((task) => task.id === activeTaskId)) {
       saveTaskId(unfinishedTasks[0].id);
     }
   }, [timeLeft, mode, activeTaskId]);
@@ -83,7 +87,7 @@ const TasksPage = () => {
               task={task}
               deleteTask={deleteTask}
               toggleComplete={toggleComplete}
-              startTask={() => startTask(task.id, task.taskName)}
+              saveTaskId={() => saveTaskId(task.id)}
               active={task.id === activeTaskId}
               toggleEdit={toggleEdit}
             />

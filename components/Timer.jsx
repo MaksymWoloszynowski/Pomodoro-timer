@@ -11,8 +11,6 @@ const Timer = () => {
   const seconds = timeLeft % 60;
   const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
 
-  console.log(mode)
-
   return (
     <div className={'timer-container'}>
       <div className="mode-buttons">

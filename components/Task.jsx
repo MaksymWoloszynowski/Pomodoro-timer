@@ -7,7 +7,7 @@ import DropdownOptions from "./DropdownOptions";
 
 const Task = ({
   task,
-  startTask,
+  saveTaskId,
   toggleComplete,
   deleteTask,
   active,
@@ -34,7 +34,7 @@ const Task = ({
 
   return (
     <div
-      onClick={() => startTask(task.id)}
+      onClick={saveTaskId}
       className={active ? "task active" : "task"}
     >
       <div className="task-left">
