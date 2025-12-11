@@ -1,8 +1,8 @@
 import { SettingsContext } from "@/context/SettingsContext";
 import React, { useContext, useEffect } from "react";
 
-const pomodoroColors = ["1", "2", "3", "4", "5"];
-const breakColors = ["1", "2", "3", "4", "5"];
+const pomodoroColors = ["1", "2", "3"];
+const breakColors = ["1", "2", "3"];
 
 const ColorTheme = () => {
   const { workTheme, breakTheme, setWorkTheme, setBreakTheme } = useContext(SettingsContext);
