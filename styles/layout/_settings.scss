@@ -24,19 +24,33 @@
     text-transform: uppercase;
 }
 
-.timer-section form {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.timer-settings {
+  display: flex;
+  align-items: end;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.timer-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.5rem;
+}
+
+.timer-label-text {
+  margin-left: 0.2rem;
 }
 
 .timer-input {
-    width: 80px;
+    width: 4em;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
     text-align: center;
+    font-size: 1.5rem;
 
     &:focus {
         border-color: #4D96FF;

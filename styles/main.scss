@@ -5,13 +5,12 @@
 
 @use 'base/base';
 
-@use 'components/button';
+@use 'components/stats-chart';
 @use 'components/color-theme-box';
-@use 'components/stats';
+@use 'components/stats-list';
 @use 'components/task';
 @use 'components/timer';
 
 @use 'layout/navbar';
-@use 'layout/home';
 @use 'layout/settings';
-@use 'layout/report';
+@use 'layout/stats';

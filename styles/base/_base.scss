@@ -21,14 +21,6 @@ body {
         &.pomodoro-3 {
             background-color: map-get($map: $pomodoro-colors, $key: "3");   
         }
-
-        &.pomodoro-4 {
-            background-color: map-get($map: $pomodoro-colors, $key: "4");   
-        }
-
-        &.pomodoro-5 {
-            background-color: map-get($map: $pomodoro-colors, $key: "5");   
-        }
     }
 
     &.break-mode {
@@ -45,14 +37,6 @@ body {
 
         &.break-3 {
             background-color: map-get($map: $break-colors, $key: "3");   
-        }
-
-        &.break-4 {
-            background-color: map-get($map: $break-colors, $key: "4");   
-        }
-
-        &.break-5 {
-            background-color: map-get($map: $break-colors, $key: "5");   
         }
     }
 }
