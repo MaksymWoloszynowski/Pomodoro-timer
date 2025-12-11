@@ -7,14 +7,11 @@ import ColorTheme from "@/components/ColorTheme";
 
 import { SettingsContext } from "@/context/SettingsContext";
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const SettingsPage = () => {
-  const {
-    workMinutes,
-    breakMinutes,
-    setWorkMinutes,
-    setBreakMinutes,
-  } = useContext(SettingsContext);
+  const { workMinutes, breakMinutes, setWorkMinutes, setBreakMinutes } =
+    useContext(SettingsContext);
 
   const [workTime, setWorkTime] = useState(workMinutes);
   const [breakTime, setBreakTime] = useState(breakMinutes);
@@ -28,24 +25,30 @@ const SettingsPage = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar />
       <div className="settings-wrapper">
         <div className="settings-section timer-section">
           <p className="settings-section-title">Timer</p>
-          <form onSubmit={handleSubmit}>
-            <input
-              className="timer-input"
-              type="number"
-              value={workTime}
-              onChange={(e) => setWorkTime(e.target.value)}
-            />
+          <form className="timer-settings" onSubmit={handleSubmit}>
+            <label className="timer-label">
+              <span className="timer-label-text">Pomodoro</span>
+              <input
+                className="timer-input"
+                type="number"
+                value={workTime}
+                onChange={(e) => setWorkTime(e.target.value)}
+              />
+            </label>
+            <label className="timer-label">
+              <span className="timer-label-text">Break</span>
             <input
               className="timer-input"
               type="number"
               value={breakTime}
               onChange={(e) => setBreakTime(e.target.value)}
             />
-            <button type="submit" className="timer-save-btn">
+            </label>
+            <button type="submit" className="timer-save-btn" onClick={() => toast.success("Saved timer settings")}>
               Save
             </button>
           </form>
@@ -56,7 +59,8 @@ const SettingsPage = () => {
         </div>
         <div className="settings-section sound-section">
           <p className="settings-section-title">Sound</p>
-          <SoundSelect className={"sound-select"}/>
+
+          <SoundSelect className={"sound-select"} />
           <VolumeSlider />
         </div>
       </div>
