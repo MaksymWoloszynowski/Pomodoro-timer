@@ -1,6 +1,7 @@
 import { SettingsProvider } from "@/context/SettingsContext";
 import { TimerProvider } from "@/context/TimerContext";
 import "@/styles/main.css"
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,6 +15,7 @@ export default function RootLayout({
     <html lang="pl">
       <body>
         <SettingsProvider>
+          <Toaster position="top-right" />
           <TimerProvider>
           {children}
           </TimerProvider>
