@@ -3,8 +3,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { TimerContext } from "./TimerContext";
 
-const pomodoroColors = ["1", "2", "3", "4", "5"];
-const breakColors = ["1", "2", "3", "4", "5"];
+const pomodoroColors = ["1", "2", "3"];
+const breakColors = ["1", "2", "3"];
 
 export const SettingsContext = createContext();
 
