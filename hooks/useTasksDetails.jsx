@@ -9,7 +9,7 @@ const useTasksDetails = () => {
   }, []);
 
   const getFullDate = () =>
-    new Date().toLocaleDateString("pl-PL").replaceAll(".", "-");
+    new Date().toLocaleDateString('en-CA'); 
 
   const saveTasksDetails = (taskId, taskName) => {
     setTasksDetails((prev) => {

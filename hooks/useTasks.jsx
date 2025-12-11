@@ -88,6 +88,7 @@ const useTasks = () => {
     saveTaskId,
     setTasks,
     saveTasks,
+    setActiveTaskId
   };
 };
 
