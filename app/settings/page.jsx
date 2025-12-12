@@ -26,6 +26,7 @@ const SettingsPage = () => {
   return (
     <div>
       <NavBar />
+      <h1>Settings</h1>
       <div className="settings-wrapper">
         <div className="settings-section timer-section">
           <p className="settings-section-title">Timer</p>
@@ -41,14 +42,18 @@ const SettingsPage = () => {
             </label>
             <label className="timer-label">
               <span className="timer-label-text">Break</span>
-            <input
-              className="timer-input"
-              type="number"
-              value={breakTime}
-              onChange={(e) => setBreakTime(e.target.value)}
-            />
+              <input
+                className="timer-input"
+                type="number"
+                value={breakTime}
+                onChange={(e) => setBreakTime(e.target.value)}
+              />
             </label>
-            <button type="submit" className="timer-save-btn" onClick={() => toast.success("Saved timer settings")}>
+            <button
+              type="submit"
+              className="timer-save-btn"
+              onClick={() => toast.success("Saved timer settings")}
+            >
               Save
             </button>
           </form>

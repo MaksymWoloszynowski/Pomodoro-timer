@@ -70,16 +70,21 @@ const StatsPage = () => {
     <div>
       <NavBar />
 
+      <h1>Your stats</h1>
       <div className="stats-wrapper">
-        <h2 className="stats-page-title">Your stats</h2>
-
         <div className="stats-summary">
           <div className="stats-summary-item">
-            <p className="stats-summary-label"><FaCalendar />Days visited</p>
+            <p className="stats-summary-label">
+              <FaCalendar />
+              Days visited
+            </p>
             <p className="stats-summary-value">{daysCount}</p>
           </div>
           <div className="stats-summary-item">
-            <p className="stats-summary-label"><FaClock />Minutes focused</p>
+            <p className="stats-summary-label">
+              <FaClock />
+              Minutes focused
+            </p>
             <p className="stats-summary-value">{getMinutesFocused()}</p>
           </div>
         </div>
@@ -88,12 +93,12 @@ const StatsPage = () => {
           <p className="stats-format-title">Change format</p>
           <div className="stats-format-buttons">
             <Button
-              className={statsFormat === 'day' ? 'active' : ''}
+              className={statsFormat === "day" ? "active" : ""}
               text="Day"
               onClick={() => setStatsFormat("day")}
             />
             <Button
-              className={statsFormat === 'month' ? 'active' : ''}
+              className={statsFormat === "month" ? "active" : ""}
               text="Month"
               onClick={() => setStatsFormat("month")}
             />
@@ -110,8 +115,7 @@ const StatsPage = () => {
         </div>
 
         <div className="stats-list">
-        <StatsList stats={tasksDetails} />
-
+          <StatsList stats={tasksDetails} />
         </div>
       </div>
     </div>
