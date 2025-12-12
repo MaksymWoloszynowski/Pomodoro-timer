@@ -6,7 +6,7 @@ const VolumeSlider = () => {
 
   return (
     <div className="volume-slider">
-      <p>Volume: </p>
+      <p style={{fontSize: "1rem"}}>Volume: </p>
       <input
         type="range"
         min={0}

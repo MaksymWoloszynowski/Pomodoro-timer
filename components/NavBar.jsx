@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { FaChartBar } from "react-icons/fa";
-import { FaCog } from "react-icons/fa";
+import { FaChartBar, FaCog, FaStar } from "react-icons/fa";
 
 const NavBar = () => {
   return (
@@ -21,6 +20,12 @@ const NavBar = () => {
           <Link href="/settings" className="navbar-link">
             <FaCog className="icon" />
             Settings
+          </Link>
+        </li>
+        <li className="navbar-item">
+          <Link href="/reviews" className="navbar-link">
+            <FaStar className="icon" />
+            Reviews
           </Link>
         </li>
       </ul>

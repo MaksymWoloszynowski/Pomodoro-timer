@@ -5,7 +5,7 @@ const pomodoroColors = ["1", "2", "3"];
 const breakColors = ["1", "2", "3"];
 
 const ColorTheme = () => {
-  const { workTheme, breakTheme, setWorkTheme, setBreakTheme } = useContext(SettingsContext);
+  const { setWorkTheme, setBreakTheme } = useContext(SettingsContext);
 
   const handlePomodoroClick = (idx) => {
     const newTheme = `pomodoro-${idx + 1}`
