@@ -1,0 +1,51 @@
+@use '../abstracts/variables' as *;
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 1rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.75rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border 0.2s ease;
+
+    &:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.review-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+    background-color: $btn-accent;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}

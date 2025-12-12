@@ -3,12 +3,12 @@
 .settings-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 2em;
     max-width: 800px;
     margin: 0 auto;
     color: black;
     font-size: 1.5rem;
+    margin-bottom: 1em;
 }
 
 .settings-section {
@@ -16,12 +16,6 @@
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.settings-section-title {
-    font-size: 2rem;
-    font-weight: $fw-b;
-    text-transform: uppercase;
 }
 
 .timer-settings {
@@ -36,7 +30,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .timer-label-text {
@@ -50,7 +44,6 @@
     border-radius: 6px;
     font-size: 1rem;
     text-align: center;
-    font-size: 1.5rem;
 
     &:focus {
         border-color: #4D96FF;
@@ -93,7 +86,7 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     &:focus {
         outline: none;

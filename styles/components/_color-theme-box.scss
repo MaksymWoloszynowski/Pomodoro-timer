@@ -1,5 +1,12 @@
 @use '../abstracts/variables' as *;
 
+
+.color-section {
+  p {
+    font-size: 1rem;
+  }
+}
+
 .boxes {
   display: flex;
   gap: 0.5rem;
@@ -7,8 +14,8 @@
 }
 
 .box {
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;

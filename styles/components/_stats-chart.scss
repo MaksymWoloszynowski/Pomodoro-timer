@@ -4,7 +4,7 @@
   border-radius: 0.8em;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 1.5em auto;
 
   display: flex;
@@ -14,7 +14,7 @@
 
 .stats-chart-title {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   color: #333;
@@ -22,7 +22,7 @@
 
 .stats-chart-wrapper {
   width: 100%;
-  height: 350px;
+  height: 20rem;
 }
 
 .stats-chart-bar {

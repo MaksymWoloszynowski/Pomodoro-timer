@@ -8,7 +8,7 @@
     border-radius: 0.6em;
     border: 1px solid grey;
     padding: 1em;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 0.5em;
     color: black;
 
@@ -55,7 +55,7 @@
 .tasks-count {
     color: white;
     font-weight: $fw-b;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5em;
 }
 
@@ -81,7 +81,7 @@
     display: flex;
     align-items: center;
     padding: 0.5em 1em;
-    font-size: 1.75rem;
+    font-size: 1rem;
     gap: 0.5em;
 
     &:hover {
@@ -120,7 +120,7 @@
 
 .task-form-input {
     border: none;
-    font-size: 1.75rem;
+    font-size: 1rem;
     width: 100%;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .estimated {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: $fw-b;
     margin-bottom: 0.5em;
 }
@@ -137,7 +137,7 @@
 .number-input {
     width: 4em;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .pomodoros-wrapper {
@@ -154,8 +154,8 @@
 
 .arrow {
     cursor: pointer;
-    width: 4em;
-    height: 4em;
+    width: 2em;
+    height: 2em;
     display: flex;
     justify-content: center;
     align-items: center;

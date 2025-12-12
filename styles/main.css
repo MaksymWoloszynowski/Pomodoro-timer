@@ -87,7 +87,6 @@ input[type=number] {
 
 body {
   font-family: "Inter", sans-serif;
-  font-size: 1.25rem;
   color: white;
 }
 body.work-mode {
@@ -117,12 +116,20 @@ body.break-mode.break-3 {
   background-color: rgb(137, 207, 240);
 }
 
+h1 {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 button {
   background: transparent;
   border-radius: 0.6em;
   cursor: pointer;
   padding: 0.5em 2em;
   font-weight: 900;
+  font-size: 1rem;
 }
 
 .stats-chart {
@@ -131,7 +138,7 @@ button {
   border-radius: 0.8em;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 1.5em auto;
   display: flex;
   flex-direction: column;
@@ -140,7 +147,7 @@ button {
 
 .stats-chart-title {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   color: #333;
@@ -148,7 +155,7 @@ button {
 
 .stats-chart-wrapper {
   width: 100%;
-  height: 350px;
+  height: 20rem;
 }
 
 .stats-chart-bar {
@@ -159,6 +166,95 @@ button {
   fill: #2563eb;
 }
 
+.review-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.review-stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.review-comment {
+  font-size: 0.95rem;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  resize: vertical;
+  transition: border 0.2s ease;
+}
+textarea:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.review-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  background-color: #4D96FF;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.review-btn:hover {
+  transform: translateY(-2px);
+}
+.review-btn:active {
+  transform: translateY(0);
+}
+
+.color-section p {
+  font-size: 1rem;
+}
+
 .boxes {
   display: flex;
   gap: 0.5rem;
@@ -166,8 +262,8 @@ button {
 }
 
 .box {
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -216,7 +312,7 @@ button {
   flex-direction: column;
   gap: 0.75rem;
   color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .stats-list .stats-list-item {
   background-color: #ffffff;
@@ -298,7 +394,7 @@ button {
   border-radius: 0.6em;
   border: 1px solid grey;
   padding: 1em;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 0.5em;
   color: black;
 }
@@ -342,7 +438,7 @@ button {
 .tasks-count {
   color: white;
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5em;
 }
 
@@ -366,7 +462,7 @@ button {
   display: flex;
   align-items: center;
   padding: 0.5em 1em;
-  font-size: 1.75rem;
+  font-size: 1rem;
   gap: 0.5em;
 }
 .dropdown-item:hover {
@@ -404,7 +500,7 @@ button {
 
 .task-form-input {
   border: none;
-  font-size: 1.75rem;
+  font-size: 1rem;
   width: 100%;
 }
 
@@ -413,7 +509,7 @@ button {
 }
 
 .estimated {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 900;
   margin-bottom: 0.5em;
 }
@@ -421,7 +517,7 @@ button {
 .number-input {
   width: 4em;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .pomodoros-wrapper {
@@ -438,8 +534,8 @@ button {
 
 .arrow {
   cursor: pointer;
-  width: 4em;
-  height: 4em;
+  width: 2em;
+  height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -514,7 +610,7 @@ button {
 }
 
 .timer-time {
-  font-size: 10rem;
+  font-size: 5rem;
   font-weight: bold;
   color: white;
   display: flex;
@@ -545,7 +641,7 @@ button {
 }
 
 .navbar {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1em 0 2em 0;
   display: flex;
   justify-content: space-evenly;
@@ -581,12 +677,12 @@ button {
 .settings-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 2em;
   max-width: 800px;
   margin: 0 auto;
   color: black;
   font-size: 1.5rem;
+  margin-bottom: 1em;
 }
 
 .settings-section {
@@ -594,12 +690,6 @@ button {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.settings-section-title {
-  font-size: 2rem;
-  font-weight: 900;
-  text-transform: uppercase;
 }
 
 .timer-settings {
@@ -614,7 +704,7 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .timer-label-text {
@@ -628,7 +718,6 @@ button {
   border-radius: 6px;
   font-size: 1rem;
   text-align: center;
-  font-size: 1.5rem;
 }
 .timer-input:focus {
   border-color: #4D96FF;
@@ -670,7 +759,7 @@ button {
   border-radius: 6px;
   border: 1px solid #ccc;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .sound-select:focus {
   outline: none;
@@ -690,14 +779,6 @@ button {
   gap: 2rem;
 }
 
-.stats-page-title {
-  font-size: 3rem;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
 .stats-summary {
   display: flex;
   justify-content: space-around;
@@ -705,7 +786,7 @@ button {
 }
 
 .stats-summary-item {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: bold;
   background: #ffffff;
   padding: 1rem 1.5rem;
@@ -735,7 +816,7 @@ button {
 }
 
 .stats-format-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 0.5em;
@@ -750,7 +831,7 @@ button {
   border-radius: 0.4rem;
   border: 1px solid #ccc;
   background-color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1rem;
   transition: all 0.2s ease;
 }
 .stats-format-buttons button:hover {
@@ -767,20 +848,4 @@ button {
   display: flex;
   justify-content: center;
   gap: 1rem;
-}
-
-.stats-chart {
-  margin: 0;
-  background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 0.8rem;
-  border: 1px solid #dcdcdc;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-}
-
-.stats-chart-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  text-align: center;
 }/*# sourceMappingURL=main.css.map */
