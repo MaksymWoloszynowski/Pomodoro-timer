@@ -1,6 +1,6 @@
 "use server"
 
-import {prisma} from "@/lib/prisma";
+import {prisma} from "@/lib/prisma.js";
 
 export async function addReview(rating: number, review: string) {
     await prisma.review.create({
