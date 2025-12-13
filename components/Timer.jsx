@@ -22,11 +22,11 @@ const Timer = () => {
       </div>
       <div className="action-buttons">
         {isActive ? (
-          <Button className={mode === 'work' ? 'active' : ''} onClick={pauseTimer} text={"PAUSE"} />
+          <Button id="action-btn" className={mode === 'work' ? 'active' : ''} onClick={pauseTimer} text={"PAUSE"} />
         ) : (
-          <Button className={mode === 'work' ? 'active' : ''} onClick={playTimer} text={"PLAY"} />
+          <Button id="action-btn" className={mode === 'work' ? 'active' : ''} onClick={playTimer} text={"PLAY"} />
         )}
-        <Button className={mode === 'work' ? 'active' : ''} onClick={resetTimer} text={"RESET"} />
+        <Button id="action-btn" className={mode === 'work' ? 'active' : ''} onClick={resetTimer} text={"RESET"} />
       </div>
     </div>
   );

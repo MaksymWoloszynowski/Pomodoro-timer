@@ -36,19 +36,17 @@ export function SettingsProvider({ children }) {
     localStorage.setItem("breakMinutes", breakMinutes);
   }, [breakMinutes]);
 
-   useEffect(() => {
-    pomodoroColors.forEach((_, idx) => {
-        document.body.classList.remove(`pomodoro-${idx+1}`)
-    })
-    document.body.classList.add(workTheme);
-  },[workTheme])
+  useEffect(() => {
+    const classes = [
+      ...pomodoroColors.map((_, i) => `pomodoro-${i + 1}`),
+      ...breakColors.map((_, i) => `break-${i + 1}`),
+    ];
 
-   useEffect(() => {
-    breakColors.forEach((_, idx) => {
-        document.body.classList.remove(`break-${idx+1}`)
-    })
-    document.body.classList.add(breakTheme);
-  },[breakTheme])
+    document.body.classList.remove(...classes);
+
+    if (workTheme) document.body.classList.add(workTheme);
+    if (breakTheme) document.body.classList.add(breakTheme);
+  }, [workTheme, breakTheme]);
 
   return (
     <SettingsContext.Provider

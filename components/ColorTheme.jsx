@@ -27,7 +27,7 @@ const ColorTheme = () => {
           {pomodoroColors.map((_, idx) => (
             <div
               key={idx}
-              className={`box pomodoro-${idx + 1}`}
+              className={`box box-pomodoro-${idx + 1}`}
               onClick={() => handlePomodoroClick(idx)}
             ></div>
           ))}
@@ -40,7 +40,7 @@ const ColorTheme = () => {
           {breakColors.map((_, idx) => (
             <div
               key={idx}
-              className={`box break-${idx + 1}`}
+              className={`box box-break-${idx + 1}`}
               onClick={() => handleBreakClick(idx)}
             ></div>
           ))}
