@@ -5,16 +5,16 @@ import Button from "@/components/Button";
 import StatsList from "@/components/StatsList";
 import StatsChart from "@/components/StatsChart";
 
-import { useState } from "react";
-import useTasksDetails from "@/hooks/useTasksDetails";
+import { useContext, useState } from "react";
 import useVisitedDays from "@/hooks/useVisitedDays";
 
 import { groupByDay, groupByMonth } from "@/hooks/useStatsTransform";
 
 import { FaCalendar, FaClock } from "react-icons/fa";
+import { TasksDetailsContext } from "@/context/TasksDetailsContext";
 
 const StatsPage = () => {
-  const { tasksDetails, getMinutesFocused } = useTasksDetails();
+  const { tasksDetails, getMinutesFocused } = useContext(TasksDetailsContext);
   const { daysCount } = useVisitedDays();
 
   const [statsFormat, setStatsFormat] = useState("day");

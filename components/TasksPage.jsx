@@ -5,8 +5,8 @@ import EditTask from "@/components/EditTask";
 import Button from "./Button";
 import { TimerContext } from "@/context/TimerContext";
 import useTasks from "@/hooks/useTasks";
-import useTasksDetails from "@/hooks/useTasksDetails";
 import toast from "react-hot-toast";
+import { TasksDetailsContext } from "@/context/TasksDetailsContext";
 
 const TasksPage = () => {
   const { mode, timeLeft, isActive, playTimer } = useContext(TimerContext);
@@ -27,10 +27,9 @@ const TasksPage = () => {
     setActiveTaskId
   } = useTasks();
 
-  const { saveTasksDetails } = useTasksDetails();
+  const { saveTasksDetails } = useContext(TasksDetailsContext);
 
   const startTask = (taskId, taskName) => {
-    if (isActive) alert("you are switching tasks");
     saveTaskId(taskId);
     playTimer();
     saveTasksDetails(taskId, taskName);
@@ -40,7 +39,7 @@ const TasksPage = () => {
     if (!activeTaskId) return;
     if (mode === "break") return;
     if (!isActive) return;
-    saveTasksDetails(activeTaskId);
+    saveTasksDetails(activeTaskId, activeTask);
   }, [timeLeft]);
 
   useEffect(() => {

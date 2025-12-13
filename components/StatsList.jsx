@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { CSVLink } from "react-csv";
-import useTasksDetails from "@/hooks/useTasksDetails";
 
 import { FaDownload } from "react-icons/fa";
+import { TasksDetailsContext } from "@/context/TasksDetailsContext";
 
 const StatsList = ({ stats }) => {
-  const { tasksDetails } = useTasksDetails()
+  const { tasksDetails } = useContext(TasksDetailsContext)
 
   const [itemOffset, setItemOffset] = useState(0);
   const pageSize = 2;
