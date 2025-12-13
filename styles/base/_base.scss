@@ -4,41 +4,43 @@
 body {
     font-family: $font-primary;
     color: white;
+    @include transition;
 
     &.work-mode {
-        background-color: $color-primary;
-        @include transition;
+        --bg-main: #{$color-primary};
 
         &.pomodoro-1 {
-            background-color: map-get($map: $pomodoro-colors, $key: "1");   
+            --bg-main: #{map-get($pomodoro-colors, "1")};
         }
 
         &.pomodoro-2 {
-            background-color: map-get($map: $pomodoro-colors, $key: "2");   
+            --bg-main: #{map-get($pomodoro-colors, "2")};
         }
 
         &.pomodoro-3 {
-            background-color: map-get($map: $pomodoro-colors, $key: "3");   
+            --bg-main: #{map-get($pomodoro-colors, "3")};
         }
     }
 
     &.break-mode {
-        background-color: $color-secondary;
-        @include transition;
+        --bg-main: #{$color-secondary};
 
         &.break-1 {
-            background-color: map-get($map: $break-colors, $key: "1");   
+            --bg-main: #{map-get($break-colors, "1")};
         }
 
         &.break-2 {
-            background-color: map-get($map: $break-colors, $key: "2");   
+            --bg-main: #{map-get($break-colors, "2")};
         }
 
         &.break-3 {
-            background-color: map-get($map: $break-colors, $key: "3");   
+            --bg-main: #{map-get($break-colors, "3")};
         }
     }
+
+    background-color: var(--bg-main);
 }
+
 
 h1 {
     font-size: 3rem;

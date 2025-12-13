@@ -41,15 +41,21 @@
         @include transition;
         background-color: white;
         border: none;
-
-        &.active:hover {
-            color: white;
-            background-color: darken($color-primary, 10%);
-        }
+        font-size: 1rem;
 
         &:hover {
             color: white;
-            background-color: darken($color-secondary, 10%);
+            background-color: var(--bg-main);
         }
+    }
+}
+
+@media (min-width: 768px) {
+    .timer-container {
+        padding: 1.5em 3em;
+    }
+
+    .timer-time {
+        font-size: 5rem;
     }
 }

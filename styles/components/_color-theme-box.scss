@@ -1,6 +1,5 @@
 @use '../abstracts/variables' as *;
 
-
 .color-section {
   p {
     font-size: 1rem;
@@ -27,13 +26,13 @@
 }
 
 @each $i, $color in $pomodoro-colors {
-    .pomodoro-#{$i} {
+  .box-pomodoro-#{$i} {
         background-color: $color;
     }
 }
 
 @each $i, $color in $break-colors {
-    .break-#{$i} {
+  .box-break-#{$i} {
         background-color: $color;
     }
 }

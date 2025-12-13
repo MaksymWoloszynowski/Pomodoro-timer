@@ -1,41 +1,94 @@
-@use '../abstracts/variables'as *;
-@use '../abstracts/mixins'as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
 .navbar {
-    font-size: 1.5rem; 
-    margin: 1em 0 2em 0;
-    display: flex;
-    justify-content: space-evenly;
+    padding: 0.75rem 0.5em;
+    position: relative;
 }
 
-.navbar-list {
+.navbar ul {
     list-style: none;
-    display: flex;
-    gap: 2em;
     margin: 0;
     padding: 0;
 }
 
-
-.navbar-item {
-    li {
-        font-size: 1.1rem;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+.navbar>ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .navbar-link {
-    color: white;
-    text-decoration: none;
-    padding: 0.5em;
-    border-radius: 0.6em;
-
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.5rem;
+    color: #f8fafc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
 
     &:hover {
-        background-color: rgba($color: #ffffff, $alpha: 0.1);
+        background-color: rgba($color: #000000, $alpha: 0.15);
+    }
+}
+
+.icon {
+    font-size: 1.1rem;
+}
+
+.hamburger-btn {
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    padding: 0 0.5em;
+}
+
+.navbar-list {
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    display: none;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    background: var(--bg-main);
+}
+
+.navbar-list.open {
+    display: block;
+    transform: translateY(0);
+}
+
+
+.navbar-item {
+    margin: 0.25rem 0;
+
+
+    .navbar-link {
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .hamburger-btn {
+        display: none;
+    }
+
+    .navbar-list {
+        position: static;
+        display: block;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+
+        ul {
+            display: flex;
+            gap: 1rem;
+        }
     }
 }
