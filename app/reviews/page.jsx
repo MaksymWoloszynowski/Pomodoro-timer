@@ -4,7 +4,12 @@ import ReviewForm from "@/components/ReviewForm";
 import { prisma } from "@/lib/prisma";
 
 export default async function ReviewsPage() {
-  const reviews = await prisma.review.findMany();
+  let reviews = [];
+  try {
+    reviews = await prisma.review.findMany();
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+  }
 
   return (
     <div>
