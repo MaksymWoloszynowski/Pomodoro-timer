@@ -1,4 +1,5 @@
 import { SettingsProvider } from "@/context/SettingsContext";
+import { TasksDetailsProvider } from "@/context/TasksDetailsContext";
 import { TimerProvider } from "@/context/TimerContext";
 import "@/styles/main.css"
 import { Toaster } from "react-hot-toast";
@@ -17,7 +18,9 @@ export default function RootLayout({
         <SettingsProvider>
           <Toaster position="top-right" />
           <TimerProvider>
+            <TasksDetailsProvider>
           {children}
+          </TasksDetailsProvider>
           </TimerProvider>
         </SettingsProvider>
       </body>
