@@ -18,6 +18,7 @@ const SettingsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    toast.success("Saved timer settings")
 
     setWorkMinutes(Number(workTime));
     setBreakMinutes(Number(breakTime));
@@ -52,7 +53,6 @@ const SettingsPage = () => {
             <button
               type="submit"
               className="timer-save-btn"
-              onClick={() => toast.success("Saved timer settings")}
             >
               Save
             </button>
